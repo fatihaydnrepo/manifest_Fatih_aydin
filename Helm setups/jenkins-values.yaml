@@ -1,0 +1,29 @@
+controller:
+  admin:
+    username: admin
+    password: admin
+  serviceType: ClusterIP
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: nfs-client
+  accessMode: ReadWriteMany
+# Jenkins'i observability namespace'ine kurmak için Helm komutunu aşağıdaki gibi kullanın:
+#
+# helm install jenkins jenkins/jenkins -n observability -f jenkins-values.yaml
+#
+# Eğer daha önce default namespace'e kurduysanız, önce kaldırıp sonra observability namespace'ine kurun:
+#
+# helm uninstall jenkins -n default
+# kubectl delete pvc -n default jenkins
+# helm install jenkins jenkins/jenkins -n observability -f jenkins-values.yaml
+#
+# values.yaml dosyasında namespace alanı yoktur, Helm komutunda -n observability ile namespace belirtmeniz yeterlidir.
+

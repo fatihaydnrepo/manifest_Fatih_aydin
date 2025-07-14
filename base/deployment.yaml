@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql-mvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgresql-mvc
+  template:
+    metadata:
+      labels:
+        app: postgresql-mvc
+    spec:
+      containers:
+        - name: postgresql-mvc
+          image: <IMAGE_PLACEHOLDER>
+          ports:
+            - containerPort: 80

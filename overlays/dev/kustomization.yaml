@@ -1,0 +1,11 @@
+resources:
+  - ../../base/deployment.yaml
+  - ../../base/service.yaml
+
+patchesStrategicMerge:
+  - patch-dev.yaml
+
+configMapGenerator:
+  - name: app-config
+    literals:
+      - ENV=dev
