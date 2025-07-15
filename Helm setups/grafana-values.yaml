@@ -81,8 +81,8 @@ persistence:
   enabled: true
   size: 5Gi
   storageClassName: "nfs-client"
-  local:
-    path: /home/azureuser/data/grafana
+
+
 
 
 

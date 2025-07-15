@@ -126,4 +126,3 @@ kubeEtcd:
 kubelet:
   enabled: true
 
-

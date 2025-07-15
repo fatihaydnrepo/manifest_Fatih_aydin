@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgresql-mvc
+  name: app-fatih-aydin-service
+  namespace: dev
 spec:
   selector:
-    app: postgresql-mvc
+    app: app-fatih-aydin
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP

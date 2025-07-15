@@ -100,4 +100,3 @@ ports:
     servicePort: 9411
     hostPort: 9411
     protocol: TCP
-

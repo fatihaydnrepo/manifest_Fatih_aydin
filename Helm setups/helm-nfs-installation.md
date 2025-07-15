@@ -15,6 +15,29 @@ Kurulumdan önce aşağıdaki bilgilere ihtiyacınız olacak:
 - NFS sunucu IP adresi veya DNS adı
 - NFS üzerinde kullanılacak path (ör: `/srv/nfs/kubedata`)
 
+### NFS Sunucusunda Dizin Oluşturma ve Paylaşma
+
+NFS sunucusunda aşağıdaki adımları uygulayın:
+
+```bash
+sudo mkdir -p /srv/nfs
+sudo chown -R nobody:nogroup /srv/nfs
+sudo chmod 777 /srv/nfs
+```
+
+`/etc/exports` dosyasına şu satırı ekleyin:
+
+```
+/srv/nfs *(rw,sync,no_subtree_check,no_root_squash)
+```
+
+Değişiklikten sonra NFS servisini yeniden başlatın:
+
+```bash
+sudo exportfs -ra
+sudo systemctl restart nfs-server
+```
+
 ## 3. Kurulum Komutu
 
 Aşağıdaki komutu kendi NFS sunucu ve path bilginize göre düzenleyerek çalıştırın:
@@ -47,4 +70,3 @@ kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storagec
 ## 5. Test
 
 Bir PVC ve Pod ile NFS provisioner'ın çalıştığını test edebilirsiniz.
-

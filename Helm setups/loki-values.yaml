@@ -40,8 +40,6 @@ singleBinary:
     storageClass: nfs-client
     accessModes:
       - ReadWriteOnce
-    local:
-      path: /home/azureuser/data/loki
     enableStatefulSetAutoDeletePVC: false
 global:
   dnsService: "coredns"
@@ -75,4 +73,3 @@ bloomGateway:
 
 minio:
   enabled: false
-

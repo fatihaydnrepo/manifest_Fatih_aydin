@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-fatih-aydin-ingress
+  namespace: dev
+spec:
+  rules:
+  - host: app-fatih.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-fatih-aydin-service
+            port:
+              number: 80

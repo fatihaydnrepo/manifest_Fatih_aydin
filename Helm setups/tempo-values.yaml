@@ -41,10 +41,8 @@ persistence:
   enabled: true
   size: 10Gi
   storageClass: nfs-client
-  local:
-    path: /home/azureuser/data/tempo
+
 
 securityContext:
   runAsUser: 10001
   fsGroup: 2000
-

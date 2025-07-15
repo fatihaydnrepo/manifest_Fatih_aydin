@@ -79,3 +79,26 @@ helm install postgresql bitnami/postgresql -n observability -f postgresql-values
 > Not: Tüm bileşenlerin values.yaml dosyalarında persistence.storageClass: nfs-client olarak ayarlanmalıdır.
 > NFS sunucu ve path bilgilerini kendi ortamınıza göre güncelleyiniz.
 > nfs-client gibi bir storageClass ve dinamik NFS provisioner varsa, PV'leri elle oluşturmanıza gerek yoktur. PVC otomatik olarak oluşur ve provisioner yeni PV yaratır.
+
+---
+
+## 9. ArgoCD Kurulumu
+
+ArgoCD, Kubernetes üzerinde GitOps tabanlı uygulama yönetimi sağlar. Kurulumu için aşağıdaki adımları izleyin:
+
+```bash
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+helm install argocd argo/argo-cd -n observability -f argocd-values.yaml
+```
+
+> Not: ArgoCD'nin varsayılan admin şifresini almak için:
+> ```bash
+> kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+> ```
+
+ArgoCD UI'ya erişmek için port-forward:
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:80
+```
+veya bir ingress tanımı ile dışarıya açabilirsiniz.
