@@ -5,7 +5,7 @@ metadata:
   namespace: dev
 spec:
   rules:
-  - host: app.fatihayd.in
+  - host: dev.fatihayd.in
     http:
       paths:
       - path: /
@@ -14,4 +14,4 @@ spec:
           service:
             name: app-fatih-aydin-service
             port:
-              number: 80
+              number: 5000
