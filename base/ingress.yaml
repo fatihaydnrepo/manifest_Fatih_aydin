@@ -5,7 +5,7 @@ metadata:
   namespace: dev
 spec:
   rules:
-  - host: app-fatih.local
+  - host: app.fatihayd.in
     http:
       paths:
       - path: /

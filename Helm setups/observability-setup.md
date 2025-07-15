@@ -129,3 +129,28 @@ helm install sealed-secrets-controller sealed-secrets/sealed-secrets \
 - Artık sealed secret manifestlerini bu controller ile kullanabilirsin.
 
 Daha fazla bilgi için: [Sealed Secrets GitHub](https://github.com/bitnami-labs/sealed-secrets)
+
+---
+
+## NGINX Ingress Controller Kurulumu
+
+Kubernetes cluster'ında Ingress kaynaklarını yönetmek için NGINX Ingress Controller kurabilirsiniz. Aşağıdaki adımları izleyin:
+
+1. Gerekli Helm repo'yu ekleyin ve güncelleyin:
+
+```sh
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+```
+
+2. NGINX Ingress Controller'ı deploy edin:
+
+```sh
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+  -n observability --create-namespace \
+  -f nginx-ingress-values.yaml
+```
+
+> Not: Değerleri kendi ortamınıza göre düzenlemek için `nginx-ingress-values.yaml` dosyasını kullanabilirsiniz.
+
+Kurulumdan sonra, LoadBalancer tipi bir servis oluşacak ve dışarıdan erişim için kullanılabilecektir.
