@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: app-fatih-aydin-ingress
   namespace: dev
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: dev.fatihayd.in
