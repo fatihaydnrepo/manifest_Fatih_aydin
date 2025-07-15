@@ -102,3 +102,30 @@ ArgoCD UI'ya erişmek için port-forward:
 kubectl port-forward svc/argocd-server -n argocd 8080:80
 ```
 veya bir ingress tanımı ile dışarıya açabilirsiniz.
+
+---
+
+## Sealed Secrets Kurulumu (Ayrı Namespace ile)
+
+### 1. Namespace Oluşturma
+Öncelikle Sealed Secrets için ayrı bir namespace oluşturalım:
+
+```sh
+kubectl create namespace sealed-secrets
+```
+
+### 2. Helm ile Sealed Secrets Kurulumu
+
+```sh
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
+helm repo update
+helm install sealed-secrets-controller sealed-secrets/sealed-secrets \
+  --namespace sealed-secrets \
+  --set fullnameOverride=sealed-secrets-controller
+```
+
+### 3. Kurulum Sonrası
+- Sealed Secrets controller pod'u `sealed-secrets` namespace'inde çalışacak.
+- Artık sealed secret manifestlerini bu controller ile kullanabilirsin.
+
+Daha fazla bilgi için: [Sealed Secrets GitHub](https://github.com/bitnami-labs/sealed-secrets)

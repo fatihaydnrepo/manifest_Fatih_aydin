@@ -20,6 +20,12 @@ spec:
         image: 20.71.249.196:8080/fatihh-app/app-v1:latest
         ports:
         - containerPort: 8080
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: db-conn-secret
+              key: ConnectionStrings__DefaultConnection
         resources:
           requests:
             cpu: 100m
