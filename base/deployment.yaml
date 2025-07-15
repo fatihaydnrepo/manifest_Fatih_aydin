@@ -13,6 +13,8 @@ spec:
       labels:
         app: app-fatih-aydin
     spec:
+      imagePullSecrets:
+        - name: harbor-secret
       containers:
       - name: app
         image: 108.142.218.164:8080/fatihh-app/app-v1:latest
