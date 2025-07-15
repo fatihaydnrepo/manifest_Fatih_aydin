@@ -17,7 +17,7 @@ spec:
         - name: harbor-secret
       containers:
       - name: app
-        image: 108.142.218.164:8080/fatihh-app/app-v1:latest
+        image: 20.71.249.196:8080/fatihh-app/app-v1:latest
         ports:
         - containerPort: 8080
         resources:
