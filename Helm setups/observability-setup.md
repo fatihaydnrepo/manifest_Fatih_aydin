@@ -94,7 +94,7 @@ helm install argocd argo/argo-cd -n observability -f argocd-values.yaml
 
 > Not: ArgoCD'nin varsayılan admin şifresini almak için:
 > ```bash
-> kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+> kubectl -n observability get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
 > ```
 
 ArgoCD UI'ya erişmek için port-forward:
